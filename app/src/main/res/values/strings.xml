@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WatchPlayApp</string>
+    <string name="missing_location_permission">missing location permition</string>
+    <string name="network_or_gps_is_not_available">network or gps is not available\n</string>
+</resources>
