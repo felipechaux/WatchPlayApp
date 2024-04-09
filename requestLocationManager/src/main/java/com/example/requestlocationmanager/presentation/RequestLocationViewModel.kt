@@ -1,11 +1,11 @@
-package com.example.watchplayapp.ui.component
+package com.example.requestlocationmanager.presentation
 
 import android.location.Location
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.watchplayapp.LocationManager
-import com.example.watchplayapp.usecases.CalculateMetersByLocationUseCase
-import com.example.watchplayapp.utils.Constants.LIMIT_METERS
+import com.example.requestlocationmanager.LocationManager
+import com.example.requestlocationmanager.usecase.CalculateMetersByLocationUseCase
+import com.example.requestlocationmanager.utils.Constants.LIMIT_METERS
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -54,6 +54,7 @@ class RequestLocationViewModel @Inject constructor(
                     "",
                     "distanceBetweenLocations $distance --limit: $isApproximatelyToLimit ",
                 )
+                _state.value = LocationUiState(distanceTraveled = distance)
                 if (isApproximatelyToLimit) {
                     currentLocation = newLocation
                     _state.value = LocationUiState(isAlreadyLimit = true)
@@ -62,10 +63,6 @@ class RequestLocationViewModel @Inject constructor(
                     setDefaultState()
                 }
             }
-            /***
-             * Access the location only once and stop the updates immediately
-             */
-            // locationCoroutineScope.cancel()
         }.catch {
             Log.d("requestCurrentLocation catch", it.toString())
         }.launchIn(locationCoroutineScope)
@@ -79,5 +76,6 @@ class RequestLocationViewModel @Inject constructor(
 
     data class LocationUiState(
         val isAlreadyLimit: Boolean = false,
+        val distanceTraveled: Double = 0.0,
     )
 }

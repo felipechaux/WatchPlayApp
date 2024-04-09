@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">WatchPlayApp</string>
-    <string name="missing_location_permission">missing location permition</string>
-    <string name="network_or_gps_is_not_available">network or gps is not available\n</string>
+    <string name="rewind_forward_player">Rewind/Forward (z-axis): %1$s</string>
+    <string name="volume_value">Volume (x-axis): %1$s</string>
+    <string name="distance_traveled">Distance Traveled (M): %1$s</string>
+    <string name="is_shake">SHAKE !!!</string>
 </resources>

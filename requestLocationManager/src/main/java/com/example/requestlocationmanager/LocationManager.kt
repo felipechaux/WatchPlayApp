@@ -1,4 +1,4 @@
-package com.example.watchplayapp
+package com.example.requestlocationmanager
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -53,9 +53,6 @@ class LocationManager @Inject constructor(@ApplicationContext private val contex
             if (!context.checkLocationPermission()) {
                 throw LocationException(context.getString(R.string.missing_location_permission))
             }
-            /*if (!context.isNetworkOrGPSEnabled()) {
-                throw LocationException(context.getString(R.string.network_or_gps_is_not_available))
-            }*/
             // make the request
             val request = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, intervalInMillis)
                 .setWaitForAccurateLocation(false).build()

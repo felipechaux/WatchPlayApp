@@ -1,4 +1,4 @@
-package com.example.watchplayapp.ui.component
+package com.example.requestlocationmanager.presentation
 
 import android.Manifest
 import android.content.Context

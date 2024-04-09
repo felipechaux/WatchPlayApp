@@ -1,4 +1,4 @@
-package com.example.watchplayapp.usecases
+package com.example.requestlocationmanager.usecase
 
 import android.location.Location
 import javax.inject.Inject

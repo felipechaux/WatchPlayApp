@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.videoplayermanager"
+    namespace = "com.example.requestlocationmanager"
     compileSdk = 34
 
     defaultConfig {
@@ -35,11 +35,10 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.media3.common)
-    implementation(libs.androidx.media3.exoplayer)
-    implementation(libs.androidx.media3.ui)
+    implementation(libs.accompanist.permission)
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
+    implementation(libs.play.services.location)
     ksp(libs.hilt.compiler)
 }

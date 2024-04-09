@@ -23,3 +23,4 @@ rootProject.name = "WatchPlayApp"
 include(":app")
 include(":sensorManager")
 include(":videoPlayerManager")
+include(":requestLocationManager")
