@@ -3,10 +3,10 @@
 This App contains the following features : 
 
 * Loading of Video by URL
-* Replay of video by 10 meters of traveled distance
-* Stop of video according to Shake !! Event
-* Time control of video (Rewind and Forward) according to Z-AXIS
-* Volume control of video according to X-AXIS
+* Replay of video by 10 meters of traveled distance - User Location
+* Stop of video according to Shake Event - Accelerometer Sensor
+* Time control of video (Rewind and Forward) according to Z-AXIS - Gyroscope Sensor
+* Volume control of video according to X-AXIS - Gyroscope Sensor
 
 ### Architecture
 
