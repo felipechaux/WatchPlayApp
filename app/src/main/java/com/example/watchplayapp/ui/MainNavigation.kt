@@ -17,12 +17,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.watchplayapp.R
 import com.example.watchplayapp.navigation.BottomNavigationItem
 import com.example.watchplayapp.navigation.Screens
 import com.example.watchplayapp.ui.component.WatchPlayTopAppBar
 import com.example.watchplayapp.ui.screen.HomeScreen
+import com.example.watchplayapp.ui.screen.SplashScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -35,45 +37,52 @@ fun MainNavigation() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            WatchPlayTopAppBar(
-                titleRes = R.string.app_name,
-            )
+            if (navController.currentBackStackEntryAsState().value?.destination?.route != Screens.Splash.route) {
+                WatchPlayTopAppBar(
+                    titleRes = R.string.app_name,
+                )
+            }
         },
         bottomBar = {
-            NavigationBar {
-                BottomNavigationItem().bottomNavigationItems()
-                    .forEachIndexed { index, navigationItem ->
-                        NavigationBarItem(
-                            selected = index == navigationSelectedItem,
-                            label = {
-                                Text(navigationItem.label)
-                            },
-                            icon = {
-                                Icon(
-                                    navigationItem.icon,
-                                    contentDescription = navigationItem.label,
-                                )
-                            },
-                            onClick = {
-                                navigationSelectedItem = index
-                                navController.navigate(navigationItem.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
+            if (navController.currentBackStackEntryAsState().value?.destination?.route != Screens.Splash.route) {
+                NavigationBar {
+                    BottomNavigationItem().bottomNavigationItems()
+                        .forEachIndexed { index, navigationItem ->
+                            NavigationBarItem(
+                                selected = index == navigationSelectedItem,
+                                label = {
+                                    Text(navigationItem.label)
+                                },
+                                icon = {
+                                    Icon(
+                                        navigationItem.icon,
+                                        contentDescription = navigationItem.label,
+                                    )
+                                },
+                                onClick = {
+                                    navigationSelectedItem = index
+                                    navController.navigate(navigationItem.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
                                     }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            },
-                        )
-                    }
+                                },
+                            )
+                        }
+                }
             }
         },
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = Screens.Home.route,
+            startDestination = Screens.Splash.route,
             modifier = Modifier.padding(paddingValues = paddingValues),
         ) {
+            composable(Screens.Splash.route) {
+                SplashScreen(navController)
+            }
             composable(Screens.Home.route) {
                 HomeScreen()
             }

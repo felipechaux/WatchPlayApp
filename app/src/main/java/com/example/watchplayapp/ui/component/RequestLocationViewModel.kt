@@ -78,7 +78,6 @@ class RequestLocationViewModel @Inject constructor(
     }
 
     data class LocationUiState(
-        val loading: Boolean = false,
         val isAlreadyLimit: Boolean = false,
     )
 }

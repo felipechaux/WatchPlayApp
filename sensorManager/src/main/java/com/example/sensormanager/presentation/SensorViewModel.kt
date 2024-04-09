@@ -1,10 +1,10 @@
 package com.example.sensormanager.presentation
 
-import android.media.ToneGenerator.MAX_VOLUME
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.sensormanager.MeasurableSensor
 import com.example.sensormanager.usecase.GetShakeAccelerationUseCase
+import com.example.sensormanager.usecase.GetVolumeUseCase
 import com.example.sensormanager.utils.Constants.SHAKE_VALUE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +20,7 @@ class SensorViewModel @Inject constructor(
     @Named("gyroscope")
     private val gyroscopeSensor: MeasurableSensor,
     private val getShakeAccelerationUseCase: GetShakeAccelerationUseCase,
+    private val getVolumeUseCase: GetVolumeUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(SensorUiState())
@@ -35,9 +36,8 @@ class SensorViewModel @Inject constructor(
         gyroscopeSensor.setOnSensorValuesChangedListener { values ->
             val axisX: Float = values[0]
             val axisZ: Float = values[2]
-            val volume = ((axisX + 1) / 2) * MAX_VOLUME
             Log.d("gyroscope ", " zaxis: $axisZ - xaxis $axisX")
-            _state.update { it.copy(volumeValue = volume.toInt()) }
+            _state.update { it.copy(volumeValue = getVolumeUseCase.invoke(axisX)) }
             _state.update { it.copy(rewindForwardValue = axisZ) }
         }
     }

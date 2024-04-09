@@ -1,11 +1,11 @@
-package com.example.watchplayapp.ui.component
+package com.example.videoplayermanager.presentation
 
 import android.content.Context
 import android.media.AudioManager
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.media3.common.Player
-import com.example.watchplayapp.utils.Constants.MAX_VOLUME
+import com.example.videoplayermanager.utils.Constants.MAX_VOLUME
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject

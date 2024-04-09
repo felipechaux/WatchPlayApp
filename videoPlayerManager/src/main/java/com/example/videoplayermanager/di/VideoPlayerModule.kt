@@ -1,4 +1,4 @@
-package com.example.watchplayapp.di
+package com.example.videoplayermanager.di
 
 import android.app.Application
 import androidx.media3.common.Player

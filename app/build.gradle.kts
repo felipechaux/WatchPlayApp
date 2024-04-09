@@ -52,6 +52,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":videoPlayerManager"))
     implementation(project(":sensorManager"))
 
     implementation(libs.androidx.core.ktx)
@@ -60,6 +61,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.navigation)
+    implementation("com.airbnb.android:lottie-compose:5.2.0")
 
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
@@ -76,9 +78,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("com.google.accompanist:accompanist-permissions:0.32.0")
-    implementation("androidx.media3:media3-exoplayer:1.3.0")
-    implementation("androidx.media3:media3-ui:1.3.0")
-    implementation("androidx.media3:media3-common:1.3.0")
 
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)

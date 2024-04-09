@@ -1,4 +1,4 @@
-package com.example.watchplayapp.ui.component
+package com.example.videoplayermanager.presentation
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -25,7 +25,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.common.MediaItem
 import androidx.media3.ui.PlayerView
-import com.example.watchplayapp.utils.Constants.REWIND_FORWARD_SECONDS
+import com.example.videoplayermanager.utils.Constants.REWIND_FORWARD_SECONDS
 
 @Composable
 fun VideoPlayer(
@@ -36,7 +36,8 @@ fun VideoPlayer(
     rewindForwardValue: Float = 0f,
     url: String,
 ) {
-    val videoPlayerViewModel = hiltViewModel<VideoPlayerViewModel>()
+    val videoPlayerViewModel: VideoPlayerViewModel = hiltViewModel()
+
     videoPlayerViewModel.setVolume(volumeValue)
 
     var lifecycle by remember {
