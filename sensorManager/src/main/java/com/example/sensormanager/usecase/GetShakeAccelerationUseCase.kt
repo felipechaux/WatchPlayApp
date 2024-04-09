@@ -1,6 +1,6 @@
 package com.example.sensormanager.usecase
 
-import  android.hardware.SensorManager
+import android.hardware.SensorManager
 import javax.inject.Inject
 import kotlin.math.sqrt
 

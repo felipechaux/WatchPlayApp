@@ -40,5 +40,9 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
     implementation(libs.play.services.location)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.inline)
+    androidTestImplementation(libs.androidx.junit)
     ksp(libs.hilt.compiler)
 }
