@@ -21,11 +21,16 @@ This App contains the following features :
 * SensorManager
 * VideoPlayerManager
 
-### External Libraries: 
+### External Libraries
 
 * ExoPlayer
 * Accompanist permissions
 * Airbnb Lottie Animations
+
+### Unit Tests
+
+* CalculateMetersByLocationUseCaseTest
+* GetShakeAccelerationUseCaseTest
 
 
 ## Screenshots 
